@@ -1,5 +1,5 @@
 # Lambda-Expression
-Java 8 practise
+//Java 8 practise
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,19 +15,14 @@ public class ExerciseSolutionJava8 {
                 new Person("Charlotte", "Bronte", 45),
                 new Person("Matthew", "Arnold", 39)
         );
-
         //Sorting
         Collections.sort(people, (p1, p2) -> p1.getLastName().compareTo(p2.getLastName()));
-
         //Step 1 - sorting by last name
         printConditionally(people, p -> true);
         //Step 2 - Create a method that prints all elements in the list
-
         //Step 3 - create a method that prints all peaople that have last name beggining with C
         System.out.println("Starts with C");
         printConditionally(people, (p) -> p.getLastName().startsWith("C"));
-
-
     }
     private static void printAll (List <Person> people){
         for (Person p : people) {
@@ -37,8 +32,7 @@ public class ExerciseSolutionJava8 {
     private static void printConditionally(List<Person> people, Predicate<Person> predicate){
         for (Person p : people){
             if(predicate.test(p)) System.out.println(p);
-
-        }
+   }
     }
 }
 
