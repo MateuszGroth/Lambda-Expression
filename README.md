@@ -1,40 +1,21 @@
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.function.BiConsumer;
 
+public class ExceptionHandlingJava8 {
+    public static void main(String[] args){
+        int [] someNumbers = {2,2,0,4,6};
+        int key=2;
 
-
-public class ExerciseSolutionJava8 {
-    public static void main(String[] args) {
-        List<Person> people = Arrays.asList(
-                new Person("Charles", "Dickens", 60),
-                new Person("Lewis", "Caroll", 42),
-                new Person("Thomas", "Calyle", 51),
-                new Person("Charlotte", "Bronte", 45),
-                new Person("Matthew", "Arnold", 39)
-        );
-        Sorting
-        Collections.sort(people, (p1, p2) -> p1.getLastName().compareTo(p2.getLastName()));
-         //Step 1 - sorting by last name
-        performConditionally(people, p -> true,p -> System.out.println(p));
-        //Step 2 - Create a method that prints all elements in the list
-        //Step 3 - create a method that prints all peaople that have last name beggining with C - first name
-        System.out.println("Starts with C - first name");
-        performConditionally(people, (p) -> p.getLastName().startsWith("C"),p -> System.out.println(p.getFirstName()) );
+        process(someNumbers, key, (a,b) -> System.out.println(b/a));
     }
-    private static void printAll (List <Person> people){
-        for (Person p : people) {
-            System.out.println(p);
-        }
-    }
-    private static void performConditionally(List<Person> people, Predicate<Person> predicate, Consumer<Person> consumer){
-        for (Person p : people){
-            if(predicate.test(p)) consumer.accept(p);
-
+    private static void process(int [] someNumbers, int key, BiConsumer<Integer, Integer> consumer){
+        for (int i : someNumbers){
+            try {
+                consumer.accept(i, key);
+            }catch(Exception e){
+                System.out.println("Error, dont divide by 0");
+            }
         }
     }
 }
+
 
